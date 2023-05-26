@@ -2,7 +2,7 @@ use std::marker::PhantomData;
 use std::ptr::NonNull;
 
 #[derive(Debug)]
-pub struct CLinkedList<T> {
+pub struct SimpleLinkedList<T> {
     first: Option<NonNull<Node<T>>>,
     last: Option<NonNull<Node<T>>>,
     size: usize,
@@ -26,7 +26,7 @@ impl<T> Node<T> {
 }
 
 // private methods
-impl <T> CLinkedList<T> {
+impl <T> SimpleLinkedList<T> {
     fn push_front_node(&mut self, mut node: Box<Node<T>>) {
         unsafe {
             node.next = self.first;
@@ -91,9 +91,9 @@ impl <T> CLinkedList<T> {
     }
 }
 
-impl<T> CLinkedList<T> {
+impl<T> SimpleLinkedList<T> {
     pub const fn new() -> Self {
-        CLinkedList { first: None, last: None, size: 0, marker: PhantomData }
+        SimpleLinkedList { first: None, last: None, size: 0, marker: PhantomData }
     }
 
     pub fn push_front(&mut self, element:T) {

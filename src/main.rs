@@ -1,6 +1,6 @@
-use crate::custom_linked_list::CLinkedList;
+use crate::simple_linked_list::SimpleLinkedList;
 
 mod
-custom_linked_list;
+simple_linked_list;
 
 fn main() {}
